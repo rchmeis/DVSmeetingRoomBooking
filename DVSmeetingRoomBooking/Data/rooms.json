@@ -1,5 +1,1 @@
-[
-  {
-
-  }
-]
+[{"Id":"b4136627","Name":"Meeting Room A","Description":"A meeting room","Capacity":25,"Equipment":[1,2]},{"Id":"65d9bd4a","Name":"Meeting Room B","Description":"Another room to hold meetings in","Capacity":50,"Equipment":[0,2]}]

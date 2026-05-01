@@ -1,4 +1,46 @@
 ﻿@page
+@using DVSmeetingRoomBooking.Models
 @model DVSmeetingRoomBooking.Pages.Rooms.CreateRoomModel
 @{
 }
+<p>@ViewData["confirmation"]</p>
+<form method="post">
+    <div class="form-group mb-3">
+        <label asp-for="Room.Name">Room Name</label>
+        <input asp-for="Room.Name" type="text" 
+               class="form-control" />         
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Room.Equipment">Select Equipment.</label>
+        <select asp-for="Room.Equipment"
+                multiple
+                class="form-control">
+                
+            @foreach (var item in Enum.GetValues(typeof(Equipment)))
+                {
+                    <option>@item</option>                
+                }
+
+        </select>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Room.Capacity">Select Capacity</label>
+        <select asp-for="Room.Capacity"
+                class="form-control"             
+                >
+                    @foreach(var item in Enum.GetValues(typeof(RoomCapacity)))
+                {
+                    <option>@item</option>
+                }      
+        </select>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Room.Description">Description</label>
+        <textarea asp-for="Room.Description" 
+                  class="form-control"               
+                  rows="3">
+        </textarea>
+    </div>
+        <button asp-page-handler="CreateRoom" 
+        type="submit" class="btn btn-success">Create Room</button>
+</form>

@@ -1,4 +1,48 @@
 ﻿@page
+@using DVSmeetingRoomBooking.Models
 @model DVSmeetingRoomBooking.Pages.Rooms.IndexModel
 @{
 }
+
+
+@if (Model.Rooms.Count == null||!Model.Rooms.Any())
+{
+    <div class="alert alert-info">
+        There are no rooms to display - add rooms to view the collection
+    </div>
+}
+else
+{
+    @foreach (Room room in Model.Rooms)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/images/room.jpg"
+             alt="image of a meeting room">
+            <div class="card-body">
+                <h5 class="card-title">@room.Name</h5>
+                <div class="card-text">                    
+                    <ul>
+                        @if (room.Equipment != null && room.Equipment.Any())
+                            {
+                                foreach(var item in room.Equipment)
+                            {
+                                <li>@item</li>
+                            }
+                        }
+              
+                    </ul>                    
+                    <p>
+                        Capacity: @((int)room.Capacity)
+                    </p>
+                    <p>
+                        @room.Description
+                    </p>
+                </div>
+            
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    }
+
+}
+
