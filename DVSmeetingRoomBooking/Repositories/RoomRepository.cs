@@ -22,15 +22,12 @@ namespace DVSmeetingRoomBooking.Repositories
 
             try
             {
-                string json = File.ReadAllText(_filePath);
-
-                //The ?? operator ensures that whats on the right happens, if the left is null
-                _rooms = JsonSerializer.Deserialize<List<Room>>(json) ?? new List<Room>();
+                string json = File.ReadAllText(_filePath);                
+                _rooms = JsonSerializer.Deserialize<List<Room>>(json) ?? new List<Room>(); //The ?? operator ensures that whats on the right happens, if the left is null
             }
             catch (JsonException)
-            {
-                // If the JSON is garbled/broken, don't crash; just start with an empty list
-                _rooms = new List<Room>();
+            {                
+                _rooms = new List<Room>(); // If the JSON is garbled/broken, don't crash; just start with an empty list
             }
         }
         private void SaveFile()

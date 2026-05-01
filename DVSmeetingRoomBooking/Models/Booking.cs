@@ -7,7 +7,7 @@
         DateTime StartTime { get; set; }
         DateTime EndTime { get; set; }
         string RoomId { get; set; }
-        string Purpose { get; set; }
+        string Description { get; set; }
 
         public Booking()
         {
@@ -21,7 +21,7 @@
             StartTime = startTime;
             EndTime = endTime;
             RoomId = roomId;
-            Purpose = purpose;
+            Description = purpose;
         }
     }
 }

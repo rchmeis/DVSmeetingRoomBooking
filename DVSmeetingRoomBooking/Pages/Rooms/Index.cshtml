@@ -13,36 +13,50 @@
 }
 else
 {
-    @foreach (Room room in Model.Rooms)
-    {
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="~/images/room.jpg"
-             alt="image of a meeting room">
-            <div class="card-body">
-                <h5 class="card-title">@room.Name</h5>
-                <div class="card-text">                    
-                    <ul>
-                        @if (room.Equipment != null && room.Equipment.Any())
-                            {
-                                foreach(var item in room.Equipment)
-                            {
-                                <li>@item</li>
-                            }
-                        }
-              
-                    </ul>                    
-                    <p>
-                        Capacity: @((int)room.Capacity)
-                    </p>
-                    <p>
-                        @room.Description
-                    </p>
-                </div>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
             
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+        @foreach (Room room in Model.Rooms)
+        {
+           <div class="col">
+                <div class="card h-100">
+                    
+                         <div class="row g-0">
+                               <div class="col">   
+                                  <img class="card-img-top rounded-0" src="~/images/room.jpg"
+                                     alt="image of a meeting room" 
+                                     style="object-fit:cover; height:100%;">
+                                  
+                                </div>
+                             <div class="col">
+                               <div class="card-body">
+                                   <h5 class="card-title">@room.Name</h5>
+                                        <div class="card-text">                    
+                                              <ul>
+                                                @if (room.Equipment != null && room.Equipment.Any())
+                                                    {
+                                                        foreach(var item in room.Equipment)
+                                                    {
+                                                        <li>@item</li>
+                                                    }
+                                                }              
+                                            </ul>                    
+                                            <p>
+                                                Capacity: @((int)room.Capacity)
+                                            </p>
+                                            <p>
+                                                @room.Description
+                                            </p>
+                                        </div>            
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                               </div>
+                             </div>
+                          </div>
+                    
+                </div>           
+          </div>
+        } 
         </div>
-    }
-
+    </div>
 }
 
