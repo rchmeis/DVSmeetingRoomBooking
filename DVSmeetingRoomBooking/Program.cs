@@ -1,3 +1,6 @@
+using DVSmeetingRoomBooking.Repositories;
+using DVSmeetingRoomBooking.Services;
+
 namespace DVSmeetingRoomBooking
 {
     public class Program
@@ -8,6 +11,8 @@ namespace DVSmeetingRoomBooking
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddSingleton<IRoomRepository,RoomRepository>();
+            builder.Services.AddSingleton<RoomService>();
 
             var app = builder.Build();
 
